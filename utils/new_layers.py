@@ -18,7 +18,7 @@ from tensorflow.keras import constraints
 from tensorflow.keras import utils
 # from keras.legacy.interfaces import conv3d_args_preprocessor, generate_legacy_interface
 from tensorflow.keras.layers import Conv3D, InputSpec
-import tensorflow.python.keras.backend as K  # _preprocess_padding, _preprocess_conv3d_input
+from tensorflow.python.keras import backend as K  # _preprocess_padding, _preprocess_conv3d_input
 
 import tensorflow as tf
 from deoxys.customize import custom_layer
