@@ -1,0 +1,15 @@
+image_dir,mask_dir,output_file_name,bin_count,label,shape,first_order,glszm,glrlm,ngtdm,gldm,glcm,LBP
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label10.csv,32,10,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label11.csv,32,11,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label12.csv,32,12,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label13.csv,32,13,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label17.csv,32,17,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label18.csv,32,18,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label26.csv,32,26,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label49.csv,32,49,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label50.csv,32,50,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label51.csv,32,51,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label52.csv,32,52,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label53.csv,32,53,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label54.csv,32,54,1,1,1,1,1,1,1,1
+../../depredict_data/bl/,../../depredict_data/roi_bl/,radiomics_outputs/bl_bin32_label58.csv,32,58,1,1,1,1,1,1,1,1

@@ -114,5 +114,7 @@ notebooks/*
 *.sif
 *.out
 
-csv/
+radiomics_outputs/
+radiomics_outputs_analysis/
+radiomics_outputs_processed/
 outcome_res/
