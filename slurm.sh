@@ -2,7 +2,7 @@
 #SBATCH --ntasks=16               # 1 core(CPU)
 #SBATCH --nodes=1                # Use 1 node
 #SBATCH --job-name=train_depredict   # sensible name for the job
-#SBATCH --mem=64G                 # Default memory per CPU is 3GB.
+#SBATCH --mem=96G                 # Default memory per CPU is 3GB.
 #SBATCH --partition=gpu # Use the verysmallmem-partition for jobs requiring < 10 GB RAM.
 #SBATCH --gres=gpu:1
 #SBATCH --mail-user=ngochuyn@nmbu.no # Email me when job is done.
@@ -49,7 +49,7 @@ echo "Finished seting up files."
 nvidia-modprobe -u -c=0
 
 # Run experiment
-export ITER_PER_EPOCH=20
+export ITER_PER_EPOCH=4
 export NUM_CPUS=4
 export RAY_ROOT=$TMPDIR/ray
 singularity exec --nv deoxys_new.sif python experiment.py $1 /net/fs-1/Ngoc/hnperf/$2 --temp_folder $SCRATCH/hnperf/$2 --analysis_folder $SCRATCH/analysis/$2 --epochs $3 ${@:4}
