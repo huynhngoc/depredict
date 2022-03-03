@@ -17,3 +17,8 @@ imskaper_feature_extraction -file radiomics_templates/pt_bin32.csv
 imskaper_feature_extraction -file radiomics_templates/pt_bin48.csv
 imskaper_feature_extraction -file radiomics_templates/pt_bin64.csv
 ```
+
+## deep learning
+```
+sbatch slurm.sh config/effb0_012.json depredict_effb0_012 20
+```
