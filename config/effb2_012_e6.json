@@ -9,7 +9,7 @@
             "batch_size": 4,
             "x_name": "input",
             "y_name": "target",
-            "batch_cache": 3,
+            "batch_cache": 4,
             "shuffle": true,
             "train_folds": [
                 0
