@@ -12,14 +12,14 @@
             "batch_cache": 3,
             "shuffle": true,
             "train_folds": [
-                3,
-                1
-            ],
-            "val_folds": [
+                0,
                 2
             ],
+            "val_folds": [
+                1
+            ],
             "test_folds": [
-                4
+                3
             ],
             "preprocessors": [
                 {
