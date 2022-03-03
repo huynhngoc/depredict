@@ -98,7 +98,7 @@
         ]
     },
     "architecture": {
-        "type": "Sequential",
+        "type": "ResNet",
         "layers": [
             {
                 "name": "stem_conv",
