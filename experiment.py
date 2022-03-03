@@ -72,4 +72,6 @@ if __name__ == '__main__':
         model_checkpoint_period=args.model_checkpoint_period,
         prediction_checkpoint_period=args.prediction_checkpoint_period,
         epochs=args.epochs,
-    ).plot_performance()
+    ).plot_performance().load_best_model(
+        recipe='3d', monitor='val_loss', use_raw_log=True, mode='min'
+    ).run_test()
