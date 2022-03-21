@@ -2,13 +2,13 @@
 #SBATCH --ntasks=16               # 1 core(CPU)
 #SBATCH --nodes=1                # Use 1 node
 #SBATCH --job-name=train_depredict   # sensible name for the job
-#SBATCH --mem=96G                 # Default memory per CPU is 3GB.
+#SBATCH --mem=200G                 # Default memory per CPU is 3GB.
 #SBATCH --partition=gpu # Use the verysmallmem-partition for jobs requiring < 10 GB RAM.
 #SBATCH --gres=gpu:1
 #SBATCH --mail-user=ngochuyn@nmbu.no # Email me when job is done.
 #SBATCH --mail-type=ALL
-#SBATCH --output=outputs/unet-%A.out
-#SBATCH --error=outputs/unet-%A.out
+#SBATCH --output=outputs/eff-%A.out
+#SBATCH --error=outputs/eff-%A.out
 
 # If you would like to use more please adjust this.
 
