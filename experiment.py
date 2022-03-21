@@ -1,7 +1,17 @@
-import utils.new_layers
+"""
+Example of running a single experiment of unet in the head and neck data.
+The json config of the main model is 'examples/json/unet-sample-config.json'
+All experiment outputs are stored in '../../hn_perf/logs'.
+After running 3 epochs, the performance of the training process can be accessed
+as log file and perforamance plot.
+In addition, we can peek the result of 42 first images from prediction set.
+"""
 
+import utils.new_layers
+# import h5py
+# from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
-from deoxys.experiment import Experiment, ExperimentPipeline
+from deoxys.experiment import DefaultExperimentPipeline
 # from deoxys.model.callbacks import PredictionCheckpoint
 # from deoxys.utils import read_file
 import argparse
@@ -9,6 +19,19 @@ import argparse
 # import numpy as np
 # from pathlib import Path
 # from comet_ml import Experiment as CometEx
+from sklearn import metrics
+from sklearn.metrics import matthews_corrcoef
+
+
+class Matthews_corrcoef_scorer:
+    def __call__(self, *args, **kwargs):
+        return matthews_corrcoef(*args, **kwargs)
+
+    def _score_func(self, *args, **kwargs):
+        return matthews_corrcoef(*args, **kwargs)
+
+
+metrics.SCORERS['mcc'] = Matthews_corrcoef_scorer()
 
 
 if __name__ == '__main__':
@@ -20,13 +43,14 @@ if __name__ == '__main__':
     parser.add_argument("config_file")
     parser.add_argument("log_folder")
     parser.add_argument("--temp_folder", default='', type=str)
-    parser.add_argument("--analysis_folder",
-                        default='', type=str)
     parser.add_argument("--epochs", default=20, type=int)
     parser.add_argument("--model_checkpoint_period", default=1, type=int)
     parser.add_argument("--prediction_checkpoint_period", default=1, type=int)
-    parser.add_argument("--meta", default='patient_idx,slice_idx', type=str)
-    parser.add_argument("--monitor", default='', type=str)
+    parser.add_argument("--meta", default='patient_idx', type=str)
+    parser.add_argument(
+        "--monitor", default='AUC', type=str)
+    parser.add_argument(
+        "--monitor_mode", default='max', type=str)
     parser.add_argument("--memory_limit", default=0, type=int)
 
     args, unknown = parser.parse_known_args()
@@ -45,11 +69,6 @@ if __name__ == '__main__':
             # Virtual devices must be set before GPUs have been initialized
             print(e)
 
-    if 'patch' in args.log_folder:
-        analysis_folder = args.analysis_folder
-    else:
-        analysis_folder = ''
-
     if '2d' in args.log_folder:
         meta = args.meta
     else:
@@ -57,21 +76,49 @@ if __name__ == '__main__':
 
     print('training from configuration', args.config_file,
           'and saving log files to', args.log_folder)
-    print('Unprocesssed prediciton are saved to', args.temp_folder)
-    if analysis_folder:
-        print('Intermediate processed files for merging patches are saved to',
-              analysis_folder)
+    print('Unprocesssed prediction are saved to', args.temp_folder)
 
-    exp = ExperimentPipeline(
+    def binarize(targets, predictions):
+        return targets, (predictions > 0.5).astype(targets.dtype)
+
+    def flip(targets, predictions):
+        return 1 - targets, 1 - (predictions > 0.5).astype(targets.dtype)
+
+    exp = DefaultExperimentPipeline(
         log_base_path=args.log_folder,
         temp_base_path=args.temp_folder
     ).from_full_config(
         args.config_file
     ).run_experiment(
         train_history_log=True,
+        model_checkpoint_period=5,
+        prediction_checkpoint_period=5,
+        epochs=5,
+    ).run_experiment(
+        train_history_log=True,
         model_checkpoint_period=args.model_checkpoint_period,
         prediction_checkpoint_period=args.prediction_checkpoint_period,
         epochs=args.epochs,
+        initial_epoch=5,
+    ).apply_post_processors(
+        map_meta_data=meta,
+        metrics=['AUC', 'roc_auc', 'f1', 'BinaryCrossentropy',
+                 'BinaryAccuracy', 'BinaryFbeta', 'mcc'],
+        metrics_sources=['tf', 'sklearn', 'sklearn',
+                         'tf', 'tf', 'tf', 'sklearn'],
+        process_functions=[None, None, binarize, None, None, None, binarize],
     ).plot_performance().load_best_model(
-        recipe='3d', monitor='val_loss', use_raw_log=True, mode='min'
-    ).run_test()
+        monitor=args.monitor,
+        use_raw_log=False,
+        mode=args.monitor_mode
+    ).run_test(
+    ).apply_post_processors(
+        map_meta_data=meta, run_test=True,
+        metrics=['AUC', 'roc_auc', 'f1', 'BinaryCrossentropy',
+                 'BinaryAccuracy', 'BinaryFbeta', 'mcc', 'f1'],
+        metrics_sources=['tf', 'sklearn', 'sklearn',
+                         'tf', 'tf', 'tf', 'sklearn', 'sklearn'],
+        process_functions=[None, None, binarize, None, None, None, binarize,
+                           flip],
+        metrics_kwargs=[{}, {}, {}, {}, {}, {}, {}, {'metric_name': 'f1_0'}]
+    )
