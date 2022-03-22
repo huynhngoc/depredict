@@ -54,7 +54,7 @@
     },
     "model_params": {
         "loss": {
-            "class_name": "BinaryCrossentropy"
+            "class_name": "NegativeLogLikelihood"
         },
         "optimizer": {
             "class_name": "adam",
@@ -71,6 +71,9 @@
             },
             {
                 "class_name": "AUC"
+            },
+            {
+                "class_name": "BinaryAccuracy"
             },
             {
                 "class_name": "TruePositives",

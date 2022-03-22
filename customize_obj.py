@@ -1,8 +1,26 @@
 from deoxys.experiment.postprocessor import DefaultPostProcessor
+from deoxys.customize import custom_loss
+from deoxys.model.losses import Loss
+import tensorflow as tf
 import h5py
 import os
 import numpy as np
 import shutil
+
+
+@custom_loss
+class NegativeLogLikelihood(Loss):
+    def __init__(self, reduction='auto', name="negative_log_likelihood"):
+        super().__init__(reduction, name)
+
+    def call(self, target, prediction):
+        target = tf.cast(target, prediction.dtype)
+
+        negative_pred = 1 - prediction
+        entropy = tf.math.log(prediction) * target
+        negative_entropy = tf.math.log(negative_pred) * negative_pred
+
+        return entropy + negative_entropy
 
 
 class EnsemblePostProcessor(DefaultPostProcessor):

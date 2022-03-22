@@ -8,6 +8,7 @@ In addition, we can peek the result of 42 first images from prediction set.
 """
 
 import utils.new_layers
+import customize_obj
 # import h5py
 # from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
