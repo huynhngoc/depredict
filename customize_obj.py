@@ -18,7 +18,7 @@ class NegativeLogLikelihood(Loss):
 
         negative_pred = 1 - prediction
         entropy = tf.math.log(prediction) * target
-        negative_entropy = tf.math.log(negative_pred) * negative_pred
+        negative_entropy = tf.math.log(negative_pred) * (1 - target)
 
         return - entropy - negative_entropy
 
