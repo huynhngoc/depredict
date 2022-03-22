@@ -124,6 +124,93 @@ model = load_architecture({
     'type': 'ResNet',
     'layers': layers
 }, input_params={
-    'shape': (173, 191, 265, 2)
+    'shape': (224, 224, 160, 2)
 })
 model.summary()
+
+
+block_args = [
+    {
+        "kernel_size": 3,
+        "num_repeat": 1,
+        "input_filters": 8,
+        "output_filters": 4,
+        "expand_ratio": 1,
+        "se_ratio": 0,
+        "strides": 1,
+        "conv_type": 1,
+    },
+    {
+        "kernel_size": 3,
+        "num_repeat": 2,
+        "input_filters": 4,
+        "output_filters": 8,
+        "expand_ratio": 4,
+        "se_ratio": 0,
+        "strides": 2,
+        "conv_type": 1,
+    },
+    {
+        "kernel_size": 3,
+        "num_repeat": 2,
+        "input_filters": 8,
+        "output_filters": 12,
+        "expand_ratio": 4,
+        "se_ratio": 0,
+        "strides": 2,
+        "conv_type": 1,
+    },
+    {
+        "kernel_size": 3,
+        "num_repeat": 3,
+        "input_filters": 12,
+        "output_filters": 24,
+        "expand_ratio": 4,
+        "se_ratio": 0.25,
+        "strides": 2,
+        "conv_type": 0,
+    },
+    {
+        "kernel_size": 3,
+        "num_repeat": 5,
+        "input_filters": 24,
+        "output_filters": 28,
+        "expand_ratio": 6,
+        "se_ratio": 0.25,
+        "strides": 1,
+        "conv_type": 0,
+    },
+    {
+        "kernel_size": 3,
+        "num_repeat": 8,
+        "input_filters": 28,
+        "output_filters": 48,
+        "expand_ratio": 6,
+        "se_ratio": 0.25,
+        "strides": 2,
+        "conv_type": 0,
+    },
+]
+
+layers = EfficientNetV2(
+    width_coefficient=1.0,
+    depth_coefficient=1.1,
+    # model_name="efficientnetv2-b0",
+    classes=1,
+    classifier_activation='sigmoid',
+    blocks_args=block_args
+)
+
+
+with open('architectures/effb1_quarter.json', 'w') as f:
+    json.dump(layers, f)
+
+
+model = load_architecture({
+    'type': 'ResNet',
+    'layers': layers
+}, input_params={
+    'shape': (224, 224, 160, 2)
+})
+model.summary()
+
