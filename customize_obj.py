@@ -20,7 +20,7 @@ class NegativeLogLikelihood(Loss):
         entropy = tf.math.log(prediction) * target
         negative_entropy = tf.math.log(negative_pred) * negative_pred
 
-        return entropy + negative_entropy
+        return - entropy - negative_entropy
 
 
 class EnsemblePostProcessor(DefaultPostProcessor):
