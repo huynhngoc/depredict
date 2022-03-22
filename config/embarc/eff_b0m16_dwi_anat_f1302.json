@@ -54,7 +54,7 @@
     },
     "model_params": {
         "loss": {
-            "class_name": "NegativeLogLikelihood"
+            "class_name": "BinaryCrossentropy"
         },
         "optimizer": {
             "class_name": "adam",
