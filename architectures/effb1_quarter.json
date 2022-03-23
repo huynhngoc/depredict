@@ -3693,7 +3693,7 @@
         "name": "top_conv",
         "class_name": "Conv3D",
         "config": {
-            "filters": 1280,
+            "filters": 320,
             "kernel_size": 1,
             "strides": 1,
             "kernel_initializer": {
@@ -3731,7 +3731,7 @@
         "name": "top_dropout",
         "class_name": "Dropout",
         "config": {
-            "rate": 0.2
+            "rate": 0.5
         }
     },
     {
