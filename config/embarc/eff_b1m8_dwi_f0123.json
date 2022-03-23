@@ -3793,6 +3793,13 @@
                 ]
             },
             {
+                "name": "connect_dropout",
+                "class_name": "Dropout",
+                "config": {
+                    "rate": 0.3
+                }
+            },
+            {
                 "name": "top_conv",
                 "class_name": "Conv3D",
                 "config": {
@@ -3834,7 +3841,7 @@
                 "name": "top_dropout",
                 "class_name": "Dropout",
                 "config": {
-                    "rate": 0.5
+                    "rate": 0.3
                 }
             },
             {
