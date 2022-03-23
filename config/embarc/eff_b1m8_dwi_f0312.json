@@ -3834,7 +3834,7 @@
                 "name": "top_dropout",
                 "class_name": "Dropout",
                 "config": {
-                    "rate": 0.2
+                    "rate": 0.5
                 }
             },
             {
