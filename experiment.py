@@ -92,8 +92,8 @@ if __name__ == '__main__':
         args.config_file
     ).run_experiment(
         train_history_log=True,
-        model_checkpoint_period=40,
-        prediction_checkpoint_period=40,
+        model_checkpoint_period=10,
+        prediction_checkpoint_period=10,
         epochs=40,
     ).run_experiment(
         train_history_log=True,
