@@ -92,15 +92,15 @@ if __name__ == '__main__':
         args.config_file
     ).run_experiment(
         train_history_log=True,
-        model_checkpoint_period=5,
-        prediction_checkpoint_period=5,
-        epochs=5,
+        model_checkpoint_period=10,
+        prediction_checkpoint_period=10,
+        epochs=40,
     ).run_experiment(
         train_history_log=True,
         model_checkpoint_period=args.model_checkpoint_period,
         prediction_checkpoint_period=args.prediction_checkpoint_period,
         epochs=args.epochs,
-        initial_epoch=5,
+        initial_epoch=40,
     ).apply_post_processors(
         map_meta_data=meta,
         metrics=['AUC', 'roc_auc', 'f1', 'BinaryCrossentropy',

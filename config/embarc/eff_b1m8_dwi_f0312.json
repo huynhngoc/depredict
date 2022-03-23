@@ -63,7 +63,7 @@
         "optimizer": {
             "class_name": "adam",
             "config": {
-                "learning_rate": 0.00005
+                "learning_rate": 0.001
             }
         },
         "metrics": [
@@ -3796,7 +3796,7 @@
                 "name": "top_conv",
                 "class_name": "Conv3D",
                 "config": {
-                    "filters": 1280,
+                    "filters": 320,
                     "kernel_size": 1,
                     "strides": 1,
                     "kernel_initializer": {
