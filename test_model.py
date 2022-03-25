@@ -196,6 +196,8 @@ layers = EfficientNetV2(
     width_coefficient=1.0,
     depth_coefficient=1.1,
     # model_name="efficientnetv2-b0",
+    drop_connect_rate=0.4,
+    dropout_rate=0.3,
     classes=1,
     classifier_activation='sigmoid',
     blocks_args=block_args
@@ -205,6 +207,9 @@ layers = EfficientNetV2(
 with open('architectures/effb1_quarter.json', 'w') as f:
     json.dump(layers, f)
 
+
+with open('architectures/effb1_quarter.json', 'r') as f:
+    layers = json.load(f)
 
 model = load_architecture({
     'type': 'ResNet',

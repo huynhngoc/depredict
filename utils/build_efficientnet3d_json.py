@@ -1055,6 +1055,8 @@ def EfficientNetV2(
             input_name = output_layers[-1]['name']
             layers.extend(output_layers)
 
+            b += 1
+
     # build top
     top_filters = round_filters(
         filters=1280,

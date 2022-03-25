@@ -110,10 +110,24 @@
         }
     },
     {
+        "name": "block1b_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.01904761904761905,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block1b_add",
         "class_name": "Add",
         "inputs": [
-            "block1b_project_activation",
+            "block1b_drop",
             "block1a_add"
         ]
     },
@@ -242,10 +256,24 @@
         }
     },
     {
+        "name": "block2b_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.05714285714285715,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block2b_add",
         "class_name": "Add",
         "inputs": [
-            "block2b_project_bn",
+            "block2b_drop",
             "block2a_project_bn"
         ]
     },
@@ -312,10 +340,24 @@
         }
     },
     {
+        "name": "block2c_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.0761904761904762,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block2c_add",
         "class_name": "Add",
         "inputs": [
-            "block2c_project_bn",
+            "block2c_drop",
             "block2b_add"
         ]
     },
@@ -444,10 +486,24 @@
         }
     },
     {
+        "name": "block3b_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.1142857142857143,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block3b_add",
         "class_name": "Add",
         "inputs": [
-            "block3b_project_bn",
+            "block3b_drop",
             "block3a_project_bn"
         ]
     },
@@ -514,10 +570,24 @@
         }
     },
     {
+        "name": "block3c_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.13333333333333336,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block3c_add",
         "class_name": "Add",
         "inputs": [
-            "block3c_project_bn",
+            "block3c_drop",
             "block3b_add"
         ]
     },
@@ -842,10 +912,24 @@
         }
     },
     {
+        "name": "block4b_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.17142857142857143,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block4b_add",
         "class_name": "Add",
         "inputs": [
-            "block4b_project_bn",
+            "block4b_drop",
             "block4a_project_bn"
         ]
     },
@@ -1010,10 +1094,24 @@
         }
     },
     {
+        "name": "block4c_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.19047619047619047,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block4c_add",
         "class_name": "Add",
         "inputs": [
-            "block4c_project_bn",
+            "block4c_drop",
             "block4b_add"
         ]
     },
@@ -1178,10 +1276,24 @@
         }
     },
     {
+        "name": "block4d_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.20952380952380953,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block4d_add",
         "class_name": "Add",
         "inputs": [
-            "block4d_project_bn",
+            "block4d_drop",
             "block4c_add"
         ]
     },
@@ -1506,10 +1618,24 @@
         }
     },
     {
+        "name": "block5b_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.24761904761904763,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block5b_add",
         "class_name": "Add",
         "inputs": [
-            "block5b_project_bn",
+            "block5b_drop",
             "block5a_project_bn"
         ]
     },
@@ -1674,10 +1800,24 @@
         }
     },
     {
+        "name": "block5c_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.2666666666666667,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block5c_add",
         "class_name": "Add",
         "inputs": [
-            "block5c_project_bn",
+            "block5c_drop",
             "block5b_add"
         ]
     },
@@ -1842,10 +1982,24 @@
         }
     },
     {
+        "name": "block5d_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.2857142857142857,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block5d_add",
         "class_name": "Add",
         "inputs": [
-            "block5d_project_bn",
+            "block5d_drop",
             "block5c_add"
         ]
     },
@@ -2010,10 +2164,24 @@
         }
     },
     {
+        "name": "block5e_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.3047619047619048,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block5e_add",
         "class_name": "Add",
         "inputs": [
-            "block5e_project_bn",
+            "block5e_drop",
             "block5d_add"
         ]
     },
@@ -2178,10 +2346,24 @@
         }
     },
     {
+        "name": "block5f_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.3238095238095238,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block5f_add",
         "class_name": "Add",
         "inputs": [
-            "block5f_project_bn",
+            "block5f_drop",
             "block5e_add"
         ]
     },
@@ -2506,10 +2688,24 @@
         }
     },
     {
+        "name": "block6b_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.36190476190476195,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6b_add",
         "class_name": "Add",
         "inputs": [
-            "block6b_project_bn",
+            "block6b_drop",
             "block6a_project_bn"
         ]
     },
@@ -2674,10 +2870,24 @@
         }
     },
     {
+        "name": "block6c_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.38095238095238093,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6c_add",
         "class_name": "Add",
         "inputs": [
-            "block6c_project_bn",
+            "block6c_drop",
             "block6b_add"
         ]
     },
@@ -2842,10 +3052,24 @@
         }
     },
     {
+        "name": "block6d_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.4,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6d_add",
         "class_name": "Add",
         "inputs": [
-            "block6d_project_bn",
+            "block6d_drop",
             "block6c_add"
         ]
     },
@@ -3010,10 +3234,24 @@
         }
     },
     {
+        "name": "block6e_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.41904761904761906,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6e_add",
         "class_name": "Add",
         "inputs": [
-            "block6e_project_bn",
+            "block6e_drop",
             "block6d_add"
         ]
     },
@@ -3178,10 +3416,24 @@
         }
     },
     {
+        "name": "block6f_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.43809523809523815,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6f_add",
         "class_name": "Add",
         "inputs": [
-            "block6f_project_bn",
+            "block6f_drop",
             "block6e_add"
         ]
     },
@@ -3346,10 +3598,24 @@
         }
     },
     {
+        "name": "block6g_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.4571428571428572,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6g_add",
         "class_name": "Add",
         "inputs": [
-            "block6g_project_bn",
+            "block6g_drop",
             "block6f_add"
         ]
     },
@@ -3514,10 +3780,24 @@
         }
     },
     {
+        "name": "block6h_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.47619047619047616,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6h_add",
         "class_name": "Add",
         "inputs": [
-            "block6h_project_bn",
+            "block6h_drop",
             "block6g_add"
         ]
     },
@@ -3682,10 +3962,24 @@
         }
     },
     {
+        "name": "block6i_drop",
+        "class_name": "Dropout",
+        "config": {
+            "rate": 0.49523809523809526,
+            "noise_shape": [
+                null,
+                1,
+                1,
+                1,
+                1
+            ]
+        }
+    },
+    {
         "name": "block6i_add",
         "class_name": "Add",
         "inputs": [
-            "block6i_project_bn",
+            "block6i_drop",
             "block6h_add"
         ]
     },
@@ -3693,7 +3987,7 @@
         "name": "top_conv",
         "class_name": "Conv3D",
         "config": {
-            "filters": 320,
+            "filters": 1280,
             "kernel_size": 1,
             "strides": 1,
             "kernel_initializer": {
@@ -3731,7 +4025,7 @@
         "name": "top_dropout",
         "class_name": "Dropout",
         "config": {
-            "rate": 0.5
+            "rate": 0.3
         }
     },
     {
